@@ -1,8 +1,11 @@
 <?php
+
+use Core\Template;
+
 if(isset($_SESSION['username'])) {
     header('location: /');
     die();
 }
 
 
-view('auth/register.view.php');
+Template::view('auth/register.html');

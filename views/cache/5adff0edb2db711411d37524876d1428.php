@@ -1,3 +1,4 @@
+@block('content')
 <section class="home-slider owl-carousel">
   <div class="slider-item" style="background-image: url(images/bg_1.jpg);">
     <div class="overlay"></div>
@@ -270,19 +271,19 @@
       </div>
     </div>
     <div class="row">
-      <?php foreach($products as $product): ?>
+      <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <div class="col-md-3">
         <div class="menu-entry">
-          <a href="/product?id=<?= $product['id'] ?>" class="img" style="background-image: url(images/<?= $product['image'] ?>);"></a>
+          <a href="/product/<?php echo e($product['id']); ?>" class="img" style="background-image: url(images/<?php echo e($product['image']); ?>);"></a>
           <div class="text text-center pt-4">
-            <h3><a href="/product?id=<?= $product['id'] ?>"><?= $product['name'] ?></a></h3>
-            <p><?= $product['description'] ?></p>
-            <p class="price"><span><?= $product['price'] ?></span></p>
-            <p><a href="/product?id=<?= $product['id'] ?>" class="btn btn-primary btn-outline-primary">Choose Options</a></p>
+            <h3><a href="/product/<?php echo e($product['id']); ?>"><?php echo e($product['name']); ?></a></h3>
+            <p><?php echo e($product['description']); ?></p>
+            <p class="price"><span><?php echo e($product['price']); ?></span></p>
+            <p><a href="/product/<?php echo e($product['id']); ?>" class="btn btn-primary btn-outline-primary">Choose Options</a></p>
           </div>
         </div>
       </div>
-     <?php endforeach; ?> 
+     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
   </div>
 </section>
@@ -402,3 +403,5 @@
     </div>
   </div>
 </section>
+@endblock
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\coffeblend\views/index.blade.php ENDPATH**/ ?>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
@@ -28,11 +27,10 @@
 </head>
 
 <body>
-    <?php
-    if (isset($notification)) {
-        echo $notification;
-    }
-    ?>
+        <?php if(isset($notification)): ?>
+            <?php echo e($notification); ?>
+
+        <?php endif; ?>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
             <a class="navbar-brand" href="index.html">Coffee<small>Blend</small></a>
@@ -47,12 +45,13 @@
                     <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
 
                     <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
-                    <?php if (isset($_SESSION['username'])) : ?>
+                    <?php if(isset($_SESSION['username'])): ?>
                         <li class="nav-item cart"><a href="/cart" class="nav-link"><span class="icon icon-shopping_cart"></span></a>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?= $_SESSION['username'] ?>
+                                <?php echo e($_SESSION['username']); ?>
+
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
@@ -63,7 +62,7 @@
                                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
                             </ul>
                         </li>
-                    <?php else : ?>
+                    <?php else: ?>
                         <li class="nav-item"><a href="/login" class="nav-link">login</a></li>
                         <li class="nav-item"><a href="/register" class="nav-link">register</a></li>
                     <?php endif; ?>
@@ -74,7 +73,7 @@
     </nav>
     <!-- END nav -->
 
-    {{ content }}
+    <?php echo $__env->yieldContent('content'); ?>
 
     <footer class="ftco-footer ftco-section img">
         <div class="overlay"></div>
@@ -177,7 +176,8 @@
         "https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false",
         "js/google-map.js",
         "js/main.js"
-    ]); ?>
+    ]);
+    ?>
 </body>
 
-</html>
+</html><?php /**PATH C:\laragon\www\coffeblend\views/layouts/app.blade.php ENDPATH**/ ?>

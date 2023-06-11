@@ -1,3 +1,5 @@
+
+@block('content')
     <section class="home-slider owl-carousel">
       <div class="slider-item" style="background-image: url(images/bg_1.jpg);" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
@@ -15,8 +17,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 ftco-animate">
-            <?php if ($errors) : ?>
-              <p><?= $errors['body'] ?></p>
+            <?php if($errors): ?>
+              <p><?php echo e($errors['body']); ?></p>
             <?php endif; ?>
             <form action="/login" method="POST" class="billing-form ftco-bg-dark p-3 p-md-5">
               <h3 class="mb-4 billing-heading">Login</h3>
@@ -46,3 +48,5 @@
       </div>
       </div>
     </section> <!-- .section -->
+@endblock
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\coffeblend\views/auth/login.blade.php ENDPATH**/ ?>

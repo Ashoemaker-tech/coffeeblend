@@ -1,8 +1,10 @@
 <?php
+
+use Core\Template;
 if(isset($_SESSION['username'])) {
     header('location: /');
     die();
 }
 
 
-view('auth/login.view.php');
+Template::view('auth/login.html');

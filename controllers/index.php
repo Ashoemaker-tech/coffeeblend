@@ -1,11 +1,12 @@
 <?php
 
-use Core\Database;
+// use Core\Database;
+// use Core\Template;
 
-$db = new Database;
-$db->connect();
-$products = $db->query("SELECT * FROM products")->get();
+// $db = new Database;
+// $db->connect();
+// $products = $db->query("SELECT * FROM products")->get();
 
-view("index.view.php",[
-    'products' => $products
-]);
+// Template::view("index.html",[
+//     'products' => $products
+// ]);

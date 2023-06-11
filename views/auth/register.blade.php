@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@block('content')
 <section class="home-slider owl-carousel">
   <div class="slider-item" style="background-image: url(images/bg_2.jpg);" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
@@ -15,9 +17,9 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 ftco-animate">
-        <?php if($errors): ?>
-          <p><?= $errors['body'] ?></p>
-        <?php endif; ?>
+        @if($errors)
+          <p>{{ $errors['body'] }}</p>
+        @endif
         <form action="/register" method="POST" class="billing-form ftco-bg-dark p-3 p-md-5">
           <h3 class="mb-4 billing-heading">Register</h3>
           <div class="row align-items-end">
@@ -52,3 +54,4 @@
   </div>
   </div>
 </section> <!-- .section -->
+@endblock

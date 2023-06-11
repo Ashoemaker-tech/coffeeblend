@@ -1,7 +1,9 @@
 {
     "require": {
         "vlucas/phpdotenv": "^5.5",
-        "tracy/tracy": "^2.10"
+        "tracy/tracy": "^2.10",
+        "catfan/medoo": "^2.1",
+        "ryangjchandler/standalone-blade": "^0.2.0"
     },
     "autoload": {
         "psr-4": {

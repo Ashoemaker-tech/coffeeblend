@@ -1,6 +1,7 @@
 <?php
 
 use Core\Database;
+use Core\Template;
 
 $db = new Database;
 $db->connect();
@@ -15,8 +16,7 @@ if(isset($_GET['id'])) {
         'id'   => $product['id']
     ])->get();
 
-    // dd($relatedProducts);
-    view('product/single.php',[
+    Template::view('product/single.html',[
         'product' => $product,
         'relatedProducts' => $relatedProducts
     ]);

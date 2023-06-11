@@ -18,7 +18,6 @@ function urlIs($value)
 
 function abort($code = 404)
 {
-
     http_response_code($code);
 
     require base_path("views/{$code}.php");
@@ -44,24 +43,11 @@ function redirect($path)
     exit();
 }
 
-function view($path, $attributes = [], $layout = 'default.php')
-{
-    $view_content = renderViewOnly($path, $attributes);
+// Function to render a Blade template
+function view($template, $data = []) {
+    global $blade;
 
-    ob_start();
-    require base_path("views/layouts/{$layout}");
-    $rendered_layout = ob_get_Clean();
-
-     echo str_replace('{{ content }}', $view_content, $rendered_layout);
-}
-
- function renderViewOnly($view, $attributes = [])
-{
-    extract($attributes);
-    
-    ob_start();
-    require base_path("views/{$view}");
-    return ob_get_clean();
+    echo $blade->make($template, $data)->render();
 }
 
 function asset($type, $paths)
