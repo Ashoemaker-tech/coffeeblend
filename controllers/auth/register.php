@@ -1,11 +1,7 @@
 <?php
 
-use Core\Template;
 
 if(isset($_SESSION['username'])) {
-    header('location: /');
-    die();
+    redirect('/');
 }
-
-
-Template::view('auth/register.html');
+view('auth/register');

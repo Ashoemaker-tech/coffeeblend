@@ -1,25 +1,29 @@
 <?php
 
-use Core\Database;
-use Core\Template;
+global $container;
 
-$db = new Database;
-$db->connect();
+$db = $container->get('db');
 
 if(isset($_GET['id'])) {
-    $product = $db->query("SELECT * FROM products WHERE id = :id",[
-    'id' => $_GET['id']
-    ])->findOrFail();
 
-    $relatedProducts = $db->query("SELECT * FROM products WHERE type = :type AND id != :id",[
+    $product = $db->get('products',[
+        'id', 'name', 'image', 'price', 'description', 'type'
+    ],
+    [
+        'id' => $_GET['id']
+    ]);
+
+    $relatedProducts = $db->select('products',[
+        'id', 'name', 'image', 'price', 'description', 'type'
+    ],[
         'type' => $product['type'],
-        'id'   => $product['id']
-    ])->get();
+        'id[!]' => $product['id']
+    ]);
 
-    Template::view('product/single.html',[
+    view('product/index',[
         'product' => $product,
         'relatedProducts' => $relatedProducts
     ]);
 }else {
-    header('location: /');
+    redirect('/');
 }

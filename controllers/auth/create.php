@@ -5,12 +5,11 @@ use Core\Validator;
 
 
 if (isset($_SESSION['username'])) {
-	header('location: /');
-	die();
+	redirect('/');
 }
 
-$db = new Database();
-$db->connect();
+global $container;
+$db = $container->get('db');
 $errors = [];
 
 if (!Validator::string($_POST['username'], 1, 20) || !Validator::email($_POST['email']) || empty($_POST['password'])) {
@@ -18,15 +17,15 @@ if (!Validator::string($_POST['username'], 1, 20) || !Validator::email($_POST['e
 }
 
 if (!empty($errors)) {
-	view("auth/register.view.php", [
+	view("auth/register", [
 		'errors' => $errors
 	]);
 }
-$db->query('INSERT INTO users(username, email, password) VALUES(:username, :email, :password)', [
+
+$db->insert('users',[
 	'username' => $_POST['username'],
 	'email' => $_POST['email'],
 	'password' => password_hash($_POST['password'], PASSWORD_DEFAULT)
 ]);
 
-header('location: /login');
-die();
+redirect('/login');

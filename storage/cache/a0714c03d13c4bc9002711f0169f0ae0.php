@@ -1,5 +1,5 @@
-@extends('layouts.app')
-  @block('content')
+
+  <?php $__env->startSection('content'); ?>
     <section class="home-slider owl-carousel">
         <div class="slider-item" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">
             <div class="overlay"></div>
@@ -20,13 +20,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mb-5 ftco-animate">
-                    <a href="images/menu-2.jpg" class="image-popup"><img src="images/{{ $product['image'] }}"
+                    <a href="images/menu-2.jpg" class="image-popup"><img src="images/<?php echo e($product['image']); ?>"
                             class="img-fluid" alt="Colorlib Template"></a>
                 </div>
                 <div class="col-lg-6 product-details pl-md-5 ftco-animate">
-                    <h3>{{ $product['name'] }}</h3>
-                    <p class="price"><span>{{ $product['price'] }}</span></p>
-                    <p>{{ $product['description'] }}</p>
+                    <h3><?php echo e($product['name']); ?></h3>
+                    <p class="price"><span><?php echo e($product['price']); ?></span></p>
+                    <p><?php echo e($product['description']); ?></p>
                     <div class="row mt-4">
                         <div class="col-md-6">
                             <div class="form-group d-flex">
@@ -59,10 +59,10 @@
                     </div>
                     <!-- Add To Cart -->
                     <form action="/cart" method="POST">
-                        <input type="hidden" name="name" value="{{ $product['name'] }}">
-                        <input type="hidden" name="image" value="{{ $product['image'] }}">
-                        <input type="hidden" name="description" value="{{ $product['description'] }}">
-                        <input type="hidden" name="price" value="{{ $product['price'] }}">
+                        <input type="hidden" name="name" value="<?php echo e($product['name']); ?>">
+                        <input type="hidden" name="image" value="<?php echo e($product['image']); ?>">
+                        <input type="hidden" name="description" value="<?php echo e($product['description']); ?>">
+                        <input type="hidden" name="price" value="<?php echo e($product['price']); ?>">
                         <button type="submit" class="btn btn-primary py-3 px-5">Add to Cart</button>
                     </form>
                 </div>
@@ -80,27 +80,30 @@
                 </div>
             </div>
             <div class="row">
-                @foreach ($relatedProducts as $relatedProduct)
+                <?php $__currentLoopData = $relatedProducts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $relatedProduct): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-md-3">
                         <div class="menu-entry">
-                            <a href="/product?id={{ $relatedProduct['id'] }}" class="img"
-                                style="background-image: url(images/{{ $relatedProduct['image'] }});">
+                            <a href="/product?id=<?php echo e($relatedProduct['id']); ?>" class="img"
+                                style="background-image: url(images/<?php echo e($relatedProduct['image']); ?>);">
                             </a>
                             <div class="text text-center pt-4">
                                 <h3>
-                                    <a href="/product?id={{ $relatedProduct['id'] }}">{{ $relatedProduct['name'] }}</a>
+                                    <a href="/product?id=<?php echo e($relatedProduct['id']); ?>"><?php echo e($relatedProduct['name']); ?></a>
                                 </h3>
-                                <p>{{ $relatedProduct['description'] }}</p>
-                                <p class="price"><span>{{ $relatedProduct['price'] }}</span></p>
+                                <p><?php echo e($relatedProduct['description']); ?></p>
+                                <p class="price"><span><?php echo e($relatedProduct['price']); ?></span></p>
                                 <p>
-                                    <a href="/product/{{ $relatedProduct['id'] }}"
-                                        class="btn btn-primary btn-outline-primary">View Options</a>
+                                    <a href="/product/<?php echo e($relatedProduct['id']); ?>"
+                                        class="btn btn-primary btn-outline-primary">View Options
+                                    </a>
                                 </p>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
     </section>
-@endblock
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\coffeblend\views/product/index.blade.php ENDPATH**/ ?>

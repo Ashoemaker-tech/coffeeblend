@@ -1,6 +1,7 @@
 <?php
 
 use Core\Response;
+use Core\Container;
 
 function dd($value)
 {
@@ -45,7 +46,8 @@ function redirect($path)
 
 // Function to render a Blade template
 function view($template, $data = []) {
-    global $blade;
+    global $container;
+    $blade = $container->get('blade');
 
     echo $blade->make($template, $data)->render();
 }
