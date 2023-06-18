@@ -1,4 +1,5 @@
 <?php
+
 if(isset($_SESSION['user_id'])) {
 
     global $container;
@@ -15,10 +16,11 @@ if(isset($_SESSION['user_id'])) {
 
     $cart_item = $db->get('cart',
     [
-        'id', 'quantity', 'product_id'
+        'id', 'quantity', 'product_id', 'user_id'
     ],
     [
-        'product_id' => $product_id
+        'product_id' => $product_id,
+		'user_id'    => $user_id
     ]);
 
     if($cart_item){
@@ -30,22 +32,24 @@ if(isset($_SESSION['user_id'])) {
        ]); 
        redirect('/');
 
-    }else {
-        $db->insert('cart',
-        [
-        'name'         => $name,
-        'description'  => $description,
-        'product_id'   => $product_id,
-        'price'        => $price,
-        'image'        => $image,
-        'quantity'     => $quantity,
-        'attributes'   => $attributes,
-        'user_id'      => $user_id
-    ]);
+    }
+
+	$db->insert('cart',
+	[
+	'name'         => $name,
+	'description'  => $description,
+	'product_id'   => $product_id,
+	'price'        => $price,
+	'image'        => $image,
+	'quantity'     => $quantity,
+	'attributes'   => $attributes,
+	'user_id'      => $user_id
+	]);
+		
     // TODO set session for success and error messages
     redirect('/cart');
-    }
 }else {
+	// TODO send login to add items message via session
     redirect('/login');
 }
 

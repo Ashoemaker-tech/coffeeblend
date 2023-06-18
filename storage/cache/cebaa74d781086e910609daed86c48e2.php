@@ -18,6 +18,7 @@
             <div class="row">
                 <div class="col-md-12 ftco-animate">
                     <div class="cart-list">
+						<?php if($cart_items): ?>
                         <table class="table">
                             <thead class="thead-primary">
                                 <tr class="text-center">
@@ -30,70 +31,51 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="text-center">
-                                    <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
-
-                                    <td class="image-prod">
-                                        <div class="img" style="background-image:url(images/menu-2.jpg);"></div>
-                                    </td>
-
-                                    <td class="product-name">
-                                        <h3>Creamy Latte Coffee</h3>
-                                        <p>Far far away, behind the word mountains, far from the countries</p>
-                                    </td>
-
-                                    <td class="price">$4.90</td>
-
-                                    <td>
-                                        <div class="input-group mb-3">
-                                            <input disabled type="text" name="quantity"
-                                                class="quantity form-control input-number" value="1" min="1"
-                                                max="100">
-                                        </div>
-                                    </td>
-
-                                    <td class="total">$4.90</td>
-                                </tr><!-- END TR-->
-
-                                <tr class="text-center">
-                                    <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
-
-                                    <td class="image-prod">
-                                        <div class="img" style="background-image:url(images/dish-2.jpg);"></div>
-                                    </td>
-
-                                    <td class="product-name">
-                                        <h3>Grilled Ribs Beef</h3>
-                                        <p>Far far away, behind the word mountains, far from the countries</p>
-                                    </td>
-
-                                    <td class="price">$15.70</td>
-
-                                    <td class="quantity">
-                                        <div class="input-group mb-3">
-                                            <input disabled type="text" name="quantity"
-                                                class="quantity form-control input-number" value="1" min="1"
-                                                max="100">
-                                        </div>
-                                    </td>
-
-                                    <td class="total">$15.70</td>
-                                </tr><!-- END TR-->
+									<?php $__currentLoopData = $cart_items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+									<tr class="text-center">
+										<td class="product-remove">
+											<form action="/remove-item" method="POST">
+												<input type="hidden" value="<?php echo e($item['product_id']); ?>" name="product_id" />
+												<button type="submit" name="submit" class="icon-close"></button>
+											</form>
+										</td>
+										<td class="image-prod">
+											<div class="img" style="background-image:url(images/<?php echo e($item['image']); ?>);"></div>
+										</td>
+										<td class="product-name">
+											<h3><?php echo e($item['name']); ?></h3>
+										</td>
+										<td class="price">$<?php echo e($item['price']); ?></td>
+										<td>
+											<div class="input-group mb-3">
+												<input disabled type="text" name="quantity"
+													class="quantity form-control input-number" value="<?php echo e($item['quantity']); ?>" min="1"
+													max="10">
+											</div>
+										</td>
+										<td class="total">$<?php echo e($item['quantity'] * $item['price']); ?></td>
+									</tr><!-- END TR-->
+									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+								
                             </tbody>
                         </table>
+						<?php else: ?>
+							<h3>You have no items in your cart</h3>
+						<?php endif; ?>
                     </div>
                 </div>
             </div>
+			<?php if($cart_items): ?>
             <div class="row justify-content-end">
                 <div class="col col-lg-3 col-md-6 mt-5 cart-wrap ftco-animate">
                     <div class="cart-total mb-3">
                         <h3>Cart Totals</h3>
                         <p class="d-flex">
                             <span>Subtotal</span>
-                            <span>$20.60</span>
+                            <span>$<?php echo e($cart_subtotals); ?></span>
                         </p>
                         <p class="d-flex">
-                            <span>Delivery</span>
+                            <span>Delivery Fee</span>
                             <span>$0.00</span>
                         </p>
                         <p class="d-flex">
@@ -103,13 +85,14 @@
                         <hr>
                         <p class="d-flex total-price">
                             <span>Total</span>
-                            <span>$17.60</span>
+                            <span>$<?php echo e($cart_subtotals - 3); ?></span>
                         </p>
                     </div>
                     <p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a>
                     </p>
                 </div>
             </div>
+			<?php endif; ?>
         </div>
     </section>
 

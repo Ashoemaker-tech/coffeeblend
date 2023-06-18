@@ -8090,15 +8090,20 @@ h1, h2, h3, h4, h5,
     padding: 40px 10px;
     border: 1px solid transparent !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important; }
-    .table tbody tr td.product-remove a {
-      bordeR: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 5px 10px; }
-      .table tbody tr td.product-remove a:hover {
+	button.icon-close{
+		padding: 5px 5px !important;
+		background-color: transparent !important;
+		border: none !important;
+	}
+	.icon-close:hover {
+		color: #000 !important;
+	}
+      .table tbody tr td.product-remove form:hover {
         background: #c49b63; }
-        .table tbody tr td.product-remove a:hover span {
-          color: #000; }
+        .table tbody tr td.product-remove form:hover button {
+          color: #000 !important; }
     .table tbody tr td.quantity {
-      width: 20%; }
+      width: 10%; }
     .table tbody tr td.image-prod .img {
       display: block;
       width: 100px;

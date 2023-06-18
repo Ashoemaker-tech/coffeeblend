@@ -22,6 +22,7 @@ get('/product', '../controllers/product/index.php');
 // Cart
 get('/cart', '../controllers/cart/index.php');
 post('/cart', '../controllers/cart/store.php');
+post('/remove-item', '../controllers/cart/destroy.php');
 
 // 404 Page
 any('/404', '../controllers/notFound.php');
