@@ -1,10 +1,25 @@
 <?php
 
-use Core\Validator;
 
 require_once BASE_PATH . 'Core/router.php';
 
 get('/', '../controllers/index.php');
+
+get('/about', function () {
+  view('about');
+});
+
+get('/contact', function () {
+  view('contact');
+});
+
+get('/services', function () {
+  view('services');
+});
+
+get('/menu', function () {
+  view('menu');
+});
 
 // Auth
 get('/register', '../controllers/auth/register.php');
@@ -23,6 +38,10 @@ get('/product', '../controllers/product/index.php');
 get('/cart', '../controllers/cart/index.php');
 post('/cart', '../controllers/cart/store.php');
 post('/remove-item', '../controllers/cart/destroy.php');
+
+// checkout
+get('/checkout', '../controllers/checkout/index.php');
+post('/checkout', '../controllers/checkout/store.php');
 
 // 404 Page
 any('/404', '../controllers/notFound.php');
