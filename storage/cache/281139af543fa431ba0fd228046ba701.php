@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 <section class="home-slider owl-carousel">
 
   <div class="slider-item" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">
@@ -44,9 +44,9 @@
                   <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                   <select name="state" id="" class="form-control" required>
 					<option value="">Select State</option>
-					@foreach ($states as $state)
-						<option value="{{ $state }}" name="state">{{ $state }}</option>
-					@endforeach
+					<?php $__currentLoopData = $states; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $state): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						<option value="<?php echo e($state); ?>" name="state"><?php echo e($state); ?></option>
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                   </select>
                 </div>
               </div>
@@ -169,4 +169,6 @@
   </div>
   </div>
 </section> <!-- .section -->
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Andrew\Desktop\sites\coffeeblend\views/checkout.blade.php ENDPATH**/ ?>

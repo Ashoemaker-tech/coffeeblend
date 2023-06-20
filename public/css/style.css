@@ -9260,6 +9260,31 @@ textarea.form-control {
   -webkit-animation: loader-dash 1.5s ease-in-out infinite;
   animation: loader-dash 1.5s ease-in-out infinite;
   stroke-linecap: round; }
+#flash-message {
+	position: absolute;
+	top:20%;
+	padding: 5px;
+	left: 40%;
+	z-index: 100;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+}
+#flash-message p {
+	padding: 10px 20px;
+	color: #fff;
+	margin: 0;
+	font-size: 20px;
+}
+#flash-message.error {
+	background-color: #dc2626;
+}
+#flash-message.success {
+	background-color: #16a34a;
+}
+.select-wrap option {
+	background-color: #000;
+}
 
 @-webkit-keyframes loader-rotate {
   100% {

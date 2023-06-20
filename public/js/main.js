@@ -296,3 +296,12 @@
 
 })(jQuery);
 
+
+window.onload = function() {
+	var flashMessage = document.getElementById('flash-message');
+	if (flashMessage) {
+		setTimeout(function() {
+			flashMessage.remove();
+		}, 3000); // Hide the flash message after 3 seconds
+	}
+};

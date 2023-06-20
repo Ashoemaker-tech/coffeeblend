@@ -17,9 +17,6 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 ftco-animate">
-        @if(isset($errors))
-          <p>{{ $errors['body'] }}</p>
-        @endif
         <form action="/register" method="POST" class="billing-form ftco-bg-dark p-3 p-md-5">
           <h3 class="mb-4 billing-heading">Register</h3>
           <div class="row align-items-end">

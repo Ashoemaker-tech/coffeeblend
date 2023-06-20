@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 <section class="home-slider owl-carousel">
   <div class="slider-item" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
@@ -7,7 +7,7 @@
       <div class="row slider-text justify-content-center align-items-center">
         <div class="col-md-7 col-sm-12 text-center ftco-animate">
           <h1 class="mb-3 mt-5 bread">Cart</h1>
-          <p class="breadcrumbs"><span class="mr-2"><a href="/">Home</a></span> <span>Cart</span>
+          <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span>
           </p>
         </div>
       </div>
@@ -20,7 +20,7 @@
     <div class="row">
       <div class="col-md-12 ftco-animate">
         <div class="cart-list">
-          @if($cart_items)
+          <?php if($cart_items): ?>
           <table class="table">
             <thead class="thead-primary">
               <tr class="text-center">
@@ -33,47 +33,47 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($cart_items as $item)
+              <?php $__currentLoopData = $cart_items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
               <tr class="text-center">
                 <td class="product-remove">
                   <form action="/remove-item" method="POST">
-                    <input type="hidden" value="{{ $item['product_id'] }}" name="product_id" />
-                    <input type="hidden" value="{{ $item['name'] }}" name="name" />
+                    <input type="hidden" value="<?php echo e($item['product_id']); ?>" name="product_id" />
+                    <input type="hidden" value="<?php echo e($item['name']); ?>" name="name" />
                     <button type="submit" name="submit" class="icon-close"></button>
                   </form>
                 </td>
                 <td class="image-prod">
-                  <div class="img" style="background-image:url(images/{{ $item['image'] }});"></div>
+                  <div class="img" style="background-image:url(images/<?php echo e($item['image']); ?>);"></div>
                 </td>
                 <td class="product-name">
-                  <h3>{{ $item['name'] }}</h3>
+                  <h3><?php echo e($item['name']); ?></h3>
                 </td>
-                <td class="price">${{ $item['price'] }}</td>
+                <td class="price">$<?php echo e($item['price']); ?></td>
                 <td>
                   <div class="input-group mb-3">
-                    <input disabled type="text" name="quantity" class="quantity form-control input-number" value="{{ $item['quantity'] }}" min="1" max="10">
+                    <input disabled type="text" name="quantity" class="quantity form-control input-number" value="<?php echo e($item['quantity']); ?>" min="1" max="10">
                   </div>
                 </td>
-                <td class="total">${{ $item['quantity'] * $item['price'] }}</td>
+                <td class="total">$<?php echo e($item['quantity'] * $item['price']); ?></td>
               </tr><!-- END TR-->
-              @endforeach
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
             </tbody>
           </table>
-          @else
+          <?php else: ?>
           <h3>You have no items in your cart</h3>
-          @endif
+          <?php endif; ?>
         </div>
       </div>
     </div>
-    @if($cart_items)
+    <?php if($cart_items): ?>
     <div class="row justify-content-end">
       <div class="col col-lg-3 col-md-6 mt-5 cart-wrap ftco-animate">
         <div class="cart-total mb-3">
           <h3>Cart Totals</h3>
           <p class="d-flex">
             <span>Subtotal</span>
-            <span>${{ $cart_subtotals }}</span>
+            <span>$<?php echo e($cart_subtotals); ?></span>
           </p>
           <p class="d-flex">
             <span>Delivery Fee</span>
@@ -86,19 +86,19 @@
           <hr>
           <p class="d-flex total-price">
             <span>Total</span>
-            <span>${{ $cart_subtotals - 3}}</span>
+            <span>$<?php echo e($cart_subtotals - 3); ?></span>
           </p>
         </div>
         <form action="/billingdetails" method="POST">
           <p class="text-center">
             <!-- TODO complete functionality -->
-            <input type="hidden" name="checkout_totals" value="{{ $cart_subtotals - 3}}" />
+            <input type="hidden" name="checkout_totals" value="<?php echo e($cart_subtotals - 3); ?>" />
             <button type="submit" id="checkout-btn" class="btn btn-primary py-3 px-4">Proceed to Billing Deatils</button>
         </form>
         </p>
       </div>
     </div>
-    @endif
+    <?php endif; ?>
   </div>
 </section>
 
@@ -160,4 +160,6 @@
     </div>
   </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Andrew\Desktop\sites\coffeeblend\views/cart.blade.php ENDPATH**/ ?>

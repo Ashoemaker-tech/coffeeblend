@@ -6,19 +6,19 @@ require_once BASE_PATH . 'Core/router.php';
 get('/', '../controllers/index.php');
 
 get('/about', function () {
-  view('about');
+	view('about');
 });
 
 get('/contact', function () {
-  view('contact');
+	view('contact');
 });
 
 get('/services', function () {
-  view('services');
+	view('services');
 });
 
 get('/menu', function () {
-  view('menu');
+	view('menu');
 });
 
 // Auth
@@ -41,7 +41,8 @@ post('/remove-item', '../controllers/cart/destroy.php');
 
 // checkout
 get('/checkout', '../controllers/checkout/index.php');
-post('/checkout', '../controllers/checkout/store.php');
+post('/checkout', '../controllers/checkout/create.php');
+post('/billingdetails', '../controllers/checkout/show.php');
 
 // 404 Page
 any('/404', '../controllers/notFound.php');

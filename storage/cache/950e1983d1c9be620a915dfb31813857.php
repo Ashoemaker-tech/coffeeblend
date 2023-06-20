@@ -4,7 +4,7 @@
     <title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    @php
+    <?php
     asset('stylesheet', [
         'css/open-iconic-bootstrap.min.css',
         'css/animate.css',
@@ -19,7 +19,7 @@
         "css/icomoon.css",
         "css/style.css"
     ]);
-    @endphp
+    ?>
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
@@ -36,18 +36,19 @@
             </button>
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item {{ urlIs('/') ? 'active' : '' }}"><a href="/" class="nav-link">Home</a></li>
-                    <li class="nav-item {{ urlIs('/menu') ? 'active' : '' }}"><a href="/menu" class="nav-link">Menu</a></li>
-                    <li class="nav-item {{ urlIs('/services') ? 'active' : '' }}"><a href="/services" class="nav-link">Services</a></li>
-                    <li class="nav-item {{ urlIs('/about') ? 'active' : '' }}"><a href="/about" class="nav-link">About</a></li>
+                    <li class="nav-item <?php echo e(urlIs('/') ? 'active' : ''); ?>"><a href="/" class="nav-link">Home</a></li>
+                    <li class="nav-item <?php echo e(urlIs('/menu') ? 'active' : ''); ?>"><a href="/menu" class="nav-link">Menu</a></li>
+                    <li class="nav-item <?php echo e(urlIs('/services') ? 'active' : ''); ?>"><a href="/services" class="nav-link">Services</a></li>
+                    <li class="nav-item <?php echo e(urlIs('/about') ? 'active' : ''); ?>"><a href="/about" class="nav-link">About</a></li>
 
-                    <li class="nav-item {{ urlIs('/contact') ? 'active' : '' }}"><a href="/contact" class="nav-link">Contact</a></li>
-                    @if(isset($_SESSION['username']))
+                    <li class="nav-item <?php echo e(urlIs('/contact') ? 'active' : ''); ?>"><a href="/contact" class="nav-link">Contact</a></li>
+                    <?php if(isset($_SESSION['username'])): ?>
                         <li class="nav-item cart"><a href="/cart" class="nav-link"><span class="icon icon-shopping_cart"></span></a>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ $_SESSION['username'] }}
+                                <?php echo e($_SESSION['username']); ?>
+
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
@@ -58,23 +59,23 @@
                                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
                             </ul>
                         </li>
-                    @else
-                        <li class="nav-item {{ urlIs('/login') ? 'active' : '' }}"><a href="/login" class="nav-link">login</a></li>
-                        <li class="nav-item {{ urlIs('/register') ? 'active' : '' }}"><a href="/register" class="nav-link">register</a></li>
-                    @endif
+                    <?php else: ?>
+                        <li class="nav-item <?php echo e(urlIs('/login') ? 'active' : ''); ?>"><a href="/login" class="nav-link">login</a></li>
+                        <li class="nav-item <?php echo e(urlIs('/register') ? 'active' : ''); ?>"><a href="/register" class="nav-link">register</a></li>
+                    <?php endif; ?>
 
                 </ul>
             </div>
         </div>
     </nav>
     <!-- END nav -->
-	@if(isset($_SESSION['flash_message']))
-		<div id="flash-message" class="{{ $_SESSION['flash_type'] }}">
-			<p>{!! show_message(); !!}</p>	
+	<?php if(isset($_SESSION['flash_message'])): ?>
+		<div id="flash-message" class="<?php echo e($_SESSION['flash_type']); ?>">
+			<p><?php echo show_message(); ?></p>	
 		</div>
-	@endif
+	<?php endif; ?>
 
-    @yield('content')
+    <?php echo $__env->yieldContent('content'); ?>
 
     <footer class="ftco-footer ftco-section img">
         <div class="overlay"></div>
@@ -159,7 +160,7 @@
             <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
             <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
         </svg></div>
-    @php asset('script', [
+    <?php asset('script', [
         "js/jquery.min.js",
         "js/jquery-migrate-3.0.1.min.js",
         "js/popper.min.js",
@@ -178,7 +179,8 @@
         "js/google-map.js",
         "js/main.js"
     ]);
-    @endphp
+    ?>
 </body>
 
 </html>
+<?php /**PATH C:\Users\Andrew\Desktop\sites\coffeeblend\views/layouts/app.blade.php ENDPATH**/ ?>
