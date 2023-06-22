@@ -43,6 +43,13 @@ function redirect($path)
 	exit();
 }
 
+function back()
+{
+	$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/';
+	header("Location: $referer");
+	exit;
+}
+
 // Function to render a Blade template
 function view($template, $data = [])
 {

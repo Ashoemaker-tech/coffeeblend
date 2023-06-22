@@ -1,6 +1,6 @@
-@extends('layouts.app')
-@section('content')
-@include('partials.header')
+
+<?php $__env->startSection('content'); ?>
+<?php echo $__env->make('partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <section class="ftco-about d-md-flex">
   <div class="one-half img" style="background-image: url(images/about.jpg);"></div>
   <div class="one-half ftco-animate">
@@ -97,7 +97,7 @@
     </div>
   </div>
 </section>
-@include('partials.menucta')
+<?php echo $__env->make('partials.menucta', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(images/bg_2.jpg);" data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container">
@@ -145,4 +145,7 @@
     </div>
   </div>
 </section>
-@endsection
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Andrew\Desktop\sites\coffeeblend\views/users/reservations.blade.php ENDPATH**/ ?>

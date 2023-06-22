@@ -25,8 +25,8 @@ if ($_POST['date'] > date("Y-m-d")) {
 		'user_id'       => $_SESSION['user_id']
 	]);
 	set_message('Your reservation was scheduled successfully', 'success');
-	redirect('/');
+	back();
 } else {
 	set_message('Please choose a valid date and time', 'error');
-	redirect('/');
+	back();
 }

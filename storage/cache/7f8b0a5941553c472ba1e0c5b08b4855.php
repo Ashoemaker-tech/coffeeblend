@@ -80,41 +80,7 @@
           </div>
           <div class="book p-4">
             <h3>Reserve A Table</h3>
-            <form action="/reservation" method="POST" class="appointment-form">
-              <div class="d-md-flex">
-                <div class="form-group">
-                  <input type="text" class="form-control" name="first_name" placeholder="First Name">
-                </div>
-                <div class="form-group ml-md-4">
-                  <input type="text" class="form-control" name="last_name" placeholder="Last Name">
-                </div>
-              </div>
-              <div class="d-md-flex">
-                <div class="form-group">
-                  <div class="input-wrap">
-                    <div class="icon"><span class="ion-md-calendar"></span></div>
-                    <input type="text" class="form-control appointment_date" name="date" placeholder="Date">
-                  </div>
-                </div>
-                <div class="form-group ml-md-4">
-                  <div class="input-wrap">
-                    <div class="icon"><span class="ion-ios-clock"></span></div>
-                    <input type="text" class="form-control appointment_time" name="time"  placeholder="Time">
-                  </div>
-                </div>
-                <div class="form-group ml-md-4">
-                  <input type="text" class="form-control" name="phone_number" placeholder="Phone">
-                </div>
-              </div>
-              <div class="d-md-flex">
-                <div class="form-group">
-                  <textarea name="message" id="" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
-                </div>
-                <div class="form-group ml-md-4">
-                  <button type="submit" class="btn btn-white py-3 px-4">Reserve</button>
-                </div>
-              </div>
-            </form>
+			<?php echo $__env->make('partials.bookingForm', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
           </div>
         </div>
       </div>
@@ -174,46 +140,7 @@
         </div>
       </div>
     </section>
-
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6 pr-md-5">
-            <div class="heading-section text-md-right ftco-animate">
-              <span class="subheading">Discover</span>
-              <h2 class="mb-4">Our Menu</h2>
-              <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-              <p><a href="/menu" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="menu-entry">
-                  <a href="#" class="img" style="background-image: url(images/menu-1.jpg);"></a>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="menu-entry mt-lg-4">
-                  <a href="#" class="img" style="background-image: url(images/menu-2.jpg);"></a>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="menu-entry">
-                  <a href="#" class="img" style="background-image: url(images/menu-3.jpg);"></a>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="menu-entry mt-lg-4">
-                  <a href="#" class="img" style="background-image: url(images/menu-4.jpg);"></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+	<?php echo $__env->make('partials.menucta', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(images/bg_2.jpg);" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
@@ -405,4 +332,5 @@
       </div>
     </section>
   <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Andrew\Desktop\sites\coffeeblend\views/index.blade.php ENDPATH**/ ?>

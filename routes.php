@@ -6,19 +6,39 @@ require_once BASE_PATH . 'Core/router.php';
 get('/', '../controllers/index.php');
 
 get('/about', function () {
-	view('about');
+	$title = 'About Us';
+	$page = 'About';
+	view('about', [
+		'page' =>  $page,
+		'title' => $title
+	]);
 });
 
 get('/contact', function () {
-	view('contact');
+	$title = 'Contact Us';
+	$page = 'Contact';
+	view('contact', [
+		'page' => $page,
+		'title' => $title
+	]);
 });
 
 get('/services', function () {
-	view('services');
+	$title = 'Our Services';
+	$page = 'Services';
+	view('services', [
+		'page' => $page,
+		'title' => $title
+	]);
 });
 
 get('/menu', function () {
-	view('menu');
+	$title = 'Our Menu';
+	$page = 'menu';
+	view('menu', [
+		'page' => $page,
+		'title' => $title
+	]);
 });
 
 // Auth
@@ -43,6 +63,10 @@ post('/remove-item', '../controllers/cart/destroy.php');
 get('/checkout', '../controllers/checkout/index.php');
 post('/checkout', '../controllers/checkout/create.php');
 post('/billingdetails', '../controllers/checkout/show.php');
+
+// User
+get('/user/reservations', '../controllers/users/reservations.php');
+get('/user/orders', '../controllers/users/orders.php');
 
 // 404 Page
 any('/404', '../controllers/notFound.php');

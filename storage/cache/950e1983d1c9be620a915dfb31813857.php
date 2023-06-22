@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+    <title><?php echo e($title); ?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <?php
@@ -51,8 +51,8 @@
 
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="/user/reservations">Reservations</a></li>
+                                <li><a class="dropdown-item" href="/user/orders">Orders</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -146,11 +146,13 @@
             <div class="row">
                 <div class="col-md-12 text-center">
 
-                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>
+                    <p>                        
+						Copyright &copy;
+						<script>
                             document.write(new Date().getFullYear());
-                        </script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                        </script> 
+						All rights reserved 
+					</p>
                 </div>
             </div>
         </div>
